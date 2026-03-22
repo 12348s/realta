@@ -1,0 +1,382 @@
+[
+  {
+    "propertyId": "100012467",
+    "title": "Shop",
+    "propertyType": "Shop",
+    "configurations": "275 sq ft built-up area",
+    "price": {
+      "range": "₹75.0 L",
+      "minValue": 7500000
+    },
+    "location": {
+      "city": "Mumbai",
+      "locality": "Dahisar East",
+      "coordinates": {
+        "latitude": "19.251509",
+        "longitude": "72.868052"
+      }
+    },
+    "possession": {
+      "status": "Ready to move"
+    },
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800",
+        "caption": "PropertyImage"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800",
+        "caption": "PropertyImage"
+      }
+    ],
+    "sellers": [
+      {
+        "name": "Pradeep Yadav",
+        "type": "Seller"
+      }
+    ],
+    "description": "This modern Shop designed with luxury facilities in the heart of Mumbai at Dahisar East is an ideal investment option. It has a carpet area of 400.0 square feet with Power Backup, Water Storage, and CCTV Surveillance."
+  },
+  {
+    "propertyId": "100255837",
+    "title": "Ready to use Office Space",
+    "propertyType": "Office Space",
+    "configurations": "1700 sq ft built-up area",
+    "price": {
+      "range": "₹10.0 Cr",
+      "minValue": 100000000
+    },
+    "location": {
+      "city": "Mumbai",
+      "locality": "Lower Parel",
+      "coordinates": {
+        "latitude": "18.997834",
+        "longitude": "72.828219"
+      }
+    },
+    "possession": {
+      "status": "Ready to move"
+    },
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800",
+        "caption": "PropertyImage"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800",
+        "caption": "PropertyImage"
+      }
+    ],
+    "sellers": [
+      {
+        "name": "Property Zone",
+        "type": "Seller"
+      }
+    ],
+    "description": "Available for sale is a commercial space at Lower Parel, Mumbai. Carpet area 1542 sqft, built-up 1700 sqft. Central AC, 3 private + 5 public parking, CCTV, Power Backup, 4 passenger + 2 service lifts."
+  },
+  {
+    "propertyId": "100321963",
+    "title": "Shop",
+    "propertyType": "Shop",
+    "configurations": "745 sq ft built-up area",
+    "price": {
+      "range": "₹4.47 Cr",
+      "minValue": 44700000
+    },
+    "location": {
+      "city": "Mumbai",
+      "locality": "Dahisar West",
+      "coordinates": {
+        "latitude": "19.25584",
+        "longitude": "72.85297"
+      }
+    },
+    "possession": {
+      "status": "Ready to move"
+    },
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800",
+        "caption": "PropertyImage"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800",
+        "caption": "PropertyImage"
+      }
+    ],
+    "sellers": [
+      {
+        "name": "Hilton Realtors",
+        "type": "Seller"
+      }
+    ],
+    "description": "Modern Shop in Dahisar West, Mumbai. Carpet area 745 sqft, ceiling height 10ft, entrance width 18ft. Water Storage, 1 public parking. Suitable for gym."
+  },
+  {
+    "propertyId": "100365136",
+    "title": "Ready to use Office Space",
+    "propertyType": "Office Space",
+    "configurations": "175 sq ft built-up area",
+    "price": {
+      "range": "₹50.0 L",
+      "minValue": 5000000
+    },
+    "location": {
+      "city": "Mumbai",
+      "locality": "Andheri West",
+      "coordinates": {
+        "latitude": "19.123637",
+        "longitude": "72.830463"
+      }
+    },
+    "possession": {
+      "status": "Ready to move"
+    },
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800",
+        "caption": "PropertyImage"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800",
+        "caption": "PropertyImage"
+      }
+    ],
+    "sellers": [
+      {
+        "name": "Mannoj Batra",
+        "type": "Seller"
+      }
+    ],
+    "description": "Commercial space in Andheri West, Mumbai. Carpet area 136 sqft, built-up 175 sqft. CCTV, Water Storage, 2 passenger + 1 service lifts, 1 public parking."
+  },
+  {
+    "propertyId": "100377588",
+    "title": "Ready to use Office Space",
+    "propertyType": "Office Space",
+    "configurations": "250 sq ft built-up area",
+    "price": {
+      "range": "₹80.0 L",
+      "minValue": 8000000
+    },
+    "location": {
+      "city": "Mumbai",
+      "locality": "Andheri West",
+      "coordinates": {
+        "latitude": "19.138051",
+        "longitude": "72.825327"
+      }
+    },
+    "possession": {
+      "status": "Ready to move"
+    },
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=800",
+        "caption": "PropertyImage"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?w=800",
+        "caption": "PropertyImage"
+      }
+    ],
+    "sellers": [
+      {
+        "name": "KWICK PROPERTY CONSULTANTS",
+        "type": "Seller"
+      }
+    ],
+    "description": "Office space in Andheri West, Mumbai. Carpet area 170 sqft, built-up 250 sqft. 7 passenger + 1 service lifts, Cafeteria, Fire safety, CCTV, Power Backup. Vastu compliant."
+  },
+  {
+    "propertyId": "100488891",
+    "title": "Ready to use Office Space",
+    "propertyType": "Office Space",
+    "configurations": "350 sq ft built-up area",
+    "price": {
+      "range": "₹72.0 L",
+      "minValue": 7200000
+    },
+    "location": {
+      "city": "Mumbai",
+      "locality": "Ghatkopar West",
+      "coordinates": {
+        "latitude": "19.091315",
+        "longitude": "72.904991"
+      }
+    },
+    "possession": {
+      "status": "Ready to move"
+    },
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800",
+        "caption": "PropertyImage"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=800",
+        "caption": "PropertyImage"
+      }
+    ],
+    "sellers": [
+      {
+        "name": "HOUSELINK PROPERTIES",
+        "type": "Seller"
+      }
+    ],
+    "description": "Commercial space in Ghatkopar West, Mumbai. Carpet area 203 sqft, built-up 350 sqft. 1 private parking, Power Backup, 1 passenger + 1 service lifts."
+  },
+  {
+    "propertyId": "100506385",
+    "title": "Bare shell Office Space",
+    "propertyType": "Office Space",
+    "configurations": "1100 sq ft built-up area",
+    "price": {
+      "range": "₹2.7 Cr",
+      "minValue": 27000000
+    },
+    "location": {
+      "city": "Mumbai",
+      "locality": "Borivali East",
+      "coordinates": {
+        "latitude": "19.226417",
+        "longitude": "72.864973"
+      }
+    },
+    "possession": {
+      "status": "Under Construction"
+    },
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1462826303086-329426d1aef5?w=800",
+        "caption": "PropertyImage"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1481277542470-605612bd2d61?w=800",
+        "caption": "PropertyImage"
+      }
+    ],
+    "sellers": [
+      {
+        "name": "starhomerealty",
+        "type": "Seller"
+      }
+    ],
+    "description": "Commercial space in Borivali East, Mumbai. Built-up 1100 sqft. Central AC, 1 private + 20 public parking, CCTV, Water Storage, Power Backup, 3 passenger + 1 service lifts."
+  },
+  {
+    "propertyId": "100507373",
+    "title": "Bare shell Office Space",
+    "propertyType": "Office Space",
+    "configurations": "700 sq ft built-up area",
+    "price": {
+      "range": "₹2.01 Cr",
+      "minValue": 20100000
+    },
+    "location": {
+      "city": "Mumbai",
+      "locality": "Borivali West",
+      "coordinates": {
+        "latitude": "19.233202",
+        "longitude": "72.841585"
+      }
+    },
+    "possession": {
+      "status": "Under Construction"
+    },
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1573167507387-6b4b98cb7c13?w=800",
+        "caption": "PropertyImage"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1568992687947-868a62a9f521?w=800",
+        "caption": "PropertyImage"
+      }
+    ],
+    "sellers": [
+      {
+        "name": "starhomerealty",
+        "type": "Seller"
+      }
+    ],
+    "description": "Office space in Borivali West, Mumbai. Built-up 700 sqft. 4 passenger + 1 service lifts, 1 private + 20 public parking, Cafeteria, Central AC, CCTV, Power Backup. Vastu compliant."
+  },
+  {
+    "propertyId": "100509773",
+    "title": "Bare shell Office Space",
+    "propertyType": "Office Space",
+    "configurations": "850 sq ft built-up area",
+    "price": {
+      "range": "₹2.25 Cr",
+      "minValue": 22500000
+    },
+    "location": {
+      "city": "Mumbai",
+      "locality": "Andheri West",
+      "coordinates": {
+        "latitude": "19.138051",
+        "longitude": "72.825327"
+      }
+    },
+    "possession": {
+      "status": "Ready to move"
+    },
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1556761175-4b46a572b786?w=800",
+        "caption": "PropertyImage"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1553697388-94e804e2f0f6?w=800",
+        "caption": "PropertyImage"
+      }
+    ],
+    "sellers": [
+      {
+        "name": "Premier Estates",
+        "type": "Seller"
+      }
+    ],
+    "description": "Commercial space in Andheri West, Mumbai. Built-up 850 sqft, age 10 years. 1 private parking, Power Backup, 1 passenger + 1 service lifts."
+  },
+  {
+    "propertyId": "100514735",
+    "title": "Shop",
+    "propertyType": "Shop",
+    "configurations": "300 sq ft built-up area",
+    "price": {
+      "range": "₹1.3 Cr",
+      "minValue": 13000000
+    },
+    "location": {
+      "city": "Mumbai",
+      "locality": "Malad East",
+      "coordinates": {
+        "latitude": "19.182388",
+        "longitude": "72.864086"
+      }
+    },
+    "possession": {
+      "status": "Ready to move"
+    },
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1604328698692-f76ea9498e76?w=800",
+        "caption": "PropertyImage"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?w=800",
+        "caption": "PropertyImage"
+      }
+    ],
+    "sellers": [
+      {
+        "name": "varun narsaria",
+        "type": "Seller"
+      }
+    ],
+    "description": "Ready to move Shop in Malad East, Mumbai. Carpet area 220 sqft. Internet Connectivity, Water Storage, 1 private washroom, 1 public parking. Suitable for grocery."
+  }
+]
