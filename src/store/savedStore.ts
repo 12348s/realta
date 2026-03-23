@@ -12,12 +12,14 @@ export const useSavedStore = create<SavedStore>()(
   persist(
     (set, get) => ({
       savedIds: [],
-      toggle: (id) =>
-        set((state) => ({
-          savedIds: state.savedIds.includes(id)
-            ? state.savedIds.filter((s) => s !== id)
-            : [...state.savedIds, id],
-        })),
+      toggle: (id) => {
+        const current = get().savedIds;
+        const isCurrentlySaved = current.includes(id);
+        set({ savedIds: isCurrentlySaved ? current.filter((s) => s !== id) : [...current, id] });
+        import('@/components/ui/use-toast').then(({ toast }) => {
+          toast({ description: isCurrentlySaved ? "Removed from wishlist" : "Added to wishlist ❤️" });
+        });
+      },
       isSaved: (id) => get().savedIds.includes(id),
     }),
     { name: 'realta-saved' }

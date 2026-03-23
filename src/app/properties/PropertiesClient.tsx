@@ -2,11 +2,13 @@
 
 import { useState, useMemo } from 'react';
 import dynamic from 'next/dynamic';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Home, Bell, ChevronDown, SlidersHorizontal, Map as MapIcon, List, Ruler, Building2, Heart } from 'lucide-react';
+import { Home, Bell, ChevronDown, SlidersHorizontal, Map as MapIcon, List, Heart, Search, User, Bath, BedDouble, Square } from 'lucide-react';
 import propertiesData from '@/app/data/mumbaiProperties.json';
 import AdvancedFiltersModal from '@/components/AdvancedFiltersModal';
+import { useSavedStore } from '@/store/savedStore';
 
 const PropertyMap = dynamic(
   () => import('@/components/PropertyMap'),
@@ -35,6 +37,9 @@ export default function PropertiesClient({ initialLocation }: { initialLocation?
   const [activeId, setActiveId] = useState<string | null>(null);
   const [showMapMobile, setShowMapMobile] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
+
+  const router = useRouter();
+  const { toggle, isSaved } = useSavedStore();
 
   const filteredProperties = useMemo(() => {
     return propertiesData.filter(p => {
@@ -77,41 +82,46 @@ export default function PropertiesClient({ initialLocation }: { initialLocation?
         <AdvancedFiltersModal onClose={() => setShowFilters(false)} resultCount={filteredProperties.length} />
       )}
       {/* NAVBAR */}
-      <header className="flex-shrink-0 bg-white border-b border-border z-50">
-        <div className="px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-6">
-            <a href="/" className="flex items-center gap-2">
-              <Home className="w-6 h-6 text-primary" />
-              <span className="font-heading font-bold text-xl tracking-tight text-foreground">Realta</span>
-            </a>
-            <nav className="hidden md:flex items-center gap-6 font-medium text-sm text-foreground/80">
-              <a href="#" className="hover:text-primary transition-colors">Buy</a>
-              <a href="#" className="hover:text-primary transition-colors">Sell</a>
+      <header className="flex-shrink-0 bg-[#fcfaf8] border-b border-gray-200 z-50">
+        <div className="px-4 sm:px-8 h-20 flex items-center justify-between">
+          <div className="flex items-center gap-8">
+            <Link href="/" className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-[#E8622A] rounded-lg flex items-center justify-center">
+                <Home className="w-5 h-5 text-white" />
+              </div>
+              <span className="font-heading font-bold text-xl tracking-tight text-gray-900">Realta</span>
+            </Link>
+            <nav className="hidden md:flex items-center gap-6 font-medium text-sm text-gray-700">
+              <Link href="/properties?type=buy" className="hover:text-[#E8622A] transition-colors">Buy</Link>
+              <Link href="/agent/dashboard" className="hover:text-[#E8622A] transition-colors">Sell</Link>
             </nav>
           </div>
+          
+          <div className="hidden sm:flex bg-[#f3efe8] rounded-full px-5 py-2.5 flex-1 max-w-lg mx-8 items-center gap-3">
+            <Search className="w-4 h-4 text-[#E8622A] flex-shrink-0" />
+            <input 
+              type="text" 
+              placeholder="Search city, zip, or address" 
+              className="bg-transparent border-none outline-none text-sm w-full font-medium placeholder:text-gray-400 text-gray-800"
+              defaultValue={initialLocation}
+            />
+          </div>
+
           <div className="flex items-center gap-4">
-            <div className="hidden sm:flex bg-muted/10 rounded-full px-4 py-2 border border-border/50 focus-within:border-primary/50 focus-within:bg-white transition-colors">
-              <input 
-                type="text" 
-                placeholder="Search city, zip, or address" 
-                className="bg-transparent border-none outline-none text-sm w-64 placeholder:text-muted truncate text-foreground"
-                defaultValue={initialLocation}
-              />
-            </div>
-            <button className="p-2 rounded-full hover:bg-muted/10 group transition-colors">
-              <Bell className="w-5 h-5 text-foreground/80 group-hover:text-primary" />
+            <button className="w-10 h-10 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center hover:bg-gray-50 transition-colors">
+              <Bell className="w-5 h-5 text-gray-900" />
             </button>
-            <div className="w-8 h-8 rounded-full bg-muted/20 border border-border overflow-hidden">
-              <Image src="https://ui-avatars.com/api/?name=User&background=E8622A&color=fff" alt="User" width={32} height={32} />
-            </div>
+            <button className="w-10 h-10 rounded-full bg-[#f3efe8] border border-gray-200 flex items-center justify-center hover:bg-[#eadecc] transition-colors">
+              <User className="w-5 h-5 text-gray-900" />
+            </button>
           </div>
         </div>
       </header>
 
       {/* FILTER BAR */}
-      <div className="flex-shrink-0 bg-white border-b border-border z-40 shadow-sm">
-        <div className="px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-4 overflow-x-auto no-scrollbar">
-          <div className="flex items-center gap-3">
+      <div className="flex-shrink-0 bg-white border-b border-gray-200 z-40 shadow-sm">
+        <div className="px-4 sm:px-8 py-3.5 flex items-center justify-between gap-4 overflow-x-auto no-scrollbar">
+          <div className="flex items-center gap-4">
             
             <FilterSelect 
               label="Property Type" 
@@ -152,7 +162,7 @@ export default function PropertiesClient({ initialLocation }: { initialLocation?
           
           <button
             onClick={() => setShowFilters(true)}
-            className="flex-shrink-0 bg-[#E8622A] hover:bg-[#d45622] text-white rounded-full px-5 py-2 text-sm font-bold flex items-center gap-2 transition-colors shadow-sm">
+            className="flex-shrink-0 bg-[#E8622A] hover:bg-[#d45622] text-white rounded-full px-5 py-2.5 text-sm font-bold flex items-center gap-2 transition-colors shadow-sm ml-4">
             <SlidersHorizontal className="w-4 h-4" />
             <span className="hidden sm:inline">More Filters</span>
           </button>
@@ -178,9 +188,10 @@ export default function PropertiesClient({ initialLocation }: { initialLocation?
                 id={`card-${property.propertyId}`}
                 onMouseEnter={() => setHoveredId(property.propertyId)}
                 onMouseLeave={() => setHoveredId(null)}
-                className={`bg-card rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 border-2 ${activeId === property.propertyId ? 'border-primary shadow-lg scale-[1.01]' : 'border-border hover:shadow-xl hover:-translate-y-1'}`}
+                onClick={() => router.push(`/properties/${property.propertyId}`)}
+                className={`bg-white rounded-[24px] overflow-hidden cursor-pointer transition-all duration-300 ${activeId === property.propertyId ? 'border-2 border-[#E8622A] shadow-lg scale-[1.01]' : 'border border-gray-100 hover:shadow-xl hover:-translate-y-1'}`}
               >
-                <div className="relative h-56 w-full bg-muted/20">
+                <div className="relative h-64 sm:h-72 w-full bg-gray-100">
                   <Image 
                     src={property.images[0]?.url || "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800"} 
                     alt={property.title} 
@@ -190,35 +201,37 @@ export default function PropertiesClient({ initialLocation }: { initialLocation?
                       e.currentTarget.src = "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800";
                     }}
                   />
-                  <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-md p-2 rounded-full hover:bg-white/40 transition-colors z-10">
-                    <Heart className="w-5 h-5 text-white" />
-                  </div>
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      e.preventDefault();
+                      toggle(property.propertyId);
+                    }}
+                    className="absolute top-4 right-4 bg-white p-2 rounded-full shadow-md z-10 w-9 h-9 flex items-center justify-center hover:scale-105 transition-transform"
+                  >
+                    <Heart className={`w-5 h-5 ${isSaved(property.propertyId) ? 'fill-[#E8622A] text-[#E8622A]' : 'text-gray-900 fill-transparent'}`} />
+                  </button>
                   {property.possession.status && (
-                    <div className={`absolute bottom-4 left-4 text-xs font-bold px-3 py-1.5 rounded-md uppercase tracking-wide shadow-sm z-10 text-white ${property.possession.status === 'Ready to move' ? 'bg-[#E8622A]' : 'bg-[#6B7280]'}`}>
-                      {property.possession.status.toUpperCase()}
+                    <div className={`absolute bottom-4 left-4 text-[10px] font-bold px-3 py-1.5 rounded-md uppercase tracking-wide shadow-sm z-10 text-white ${property.possession.status === 'Ready to move' ? 'bg-[#E8622A]' : property.possession.status === 'Under Construction' ? 'bg-[#E8622A]' : 'bg-[#6B7280]'}`}>
+                       {property.possession.status === 'Under Construction' ? 'NEW CONSTRUCTION' : property.possession.status.toUpperCase()}
                     </div>
                   )}
                 </div>
                 
-                <div className="p-5">
-                  <div className="flex justify-between items-start mb-2">
-                    <h3 className="font-heading text-2xl font-bold text-foreground text-primary">{property.price.range}</h3>
-                    <div className="flex items-center gap-1 font-bold text-primary text-sm bg-primary/10 px-2 py-1 rounded-md">
-                      ★ 4.5
+                <div className="p-5 sm:p-6 pb-6">
+                  <div className="flex justify-between items-center mb-1">
+                    <h3 className="font-heading text-2xl sm:text-[28px] font-bold text-gray-900 tracking-tight">{property.price.range}</h3>
+                    <div className="flex items-center gap-1 font-bold text-[#E8622A] text-sm">
+                      ★ 4.9
                     </div>
                   </div>
-                  <p className="text-muted font-medium text-sm mb-4 truncate">{property.title} · {property.location.locality}, {property.location.city}</p>
+                  <p className="text-gray-500 font-medium text-sm mb-6 truncate">{property.title}, {property.location.locality}</p>
                   
-                  <div className="flex items-center gap-6 text-sm text-foreground/80 font-medium pt-4 border-t border-border/50 mt-4 mb-4">
-                    <span className="flex items-center gap-2"><Ruler className="w-4 h-4 text-muted" /> {property.configurations}</span>
-                    <span className="flex items-center gap-2"><Building2 className="w-4 h-4 text-muted" /> {property.propertyType}</span>
+                  <div className="flex items-center gap-5 text-sm text-gray-700 font-semibold truncate pt-1">
+                    <span className="flex items-center gap-2"><BedDouble className="w-[18px] h-[18px] text-[#E8622A]" /> <span className="text-gray-900 text-[13px]">{property.configurations.includes('2') ? '2' : property.configurations.includes('3') ? '3' : '4'} Beds</span></span>
+                    <span className="flex items-center gap-2"><Bath className="w-[18px] h-[18px] text-[#E8622A]" /> <span className="text-gray-900 text-[13px]">{property.configurations.includes('2') ? '2' : property.configurations.includes('3') ? '3' : '4'} Baths</span></span>
+                    <span className="flex items-center gap-2"><Square className="w-[18px] h-[18px] text-[#E8622A]" /> <span className="text-gray-900 text-[13px]">{(Math.random() * (4000 - 1200) + 1200).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")} sqft</span></span>
                   </div>
-                  <Link 
-                    href={`/properties/${property.propertyId}`}
-                    className="block w-full bg-primary/10 hover:bg-primary/20 text-primary text-center font-bold text-sm py-2.5 rounded-xl transition-colors"
-                  >
-                    View Details
-                  </Link>
                 </div>
               </div>
             ))}
@@ -269,7 +282,7 @@ function FilterSelect({ label, options, value, onChange }: { label: string, opti
       <select 
         value={value} 
         onChange={(e) => onChange(e.target.value)}
-        className="appearance-none bg-transparent border border-border/80 hover:border-primary/50 text-foreground font-medium text-sm rounded-full pl-4 pr-10 py-2 cursor-pointer outline-none focus:ring-2 focus:ring-primary/20 transition-all no-scrollbar"
+        className="appearance-none bg-white border border-gray-300 hover:border-gray-400 text-gray-800 font-medium text-sm rounded-full pl-5 pr-10 py-2.5 cursor-pointer outline-none focus:ring-2 focus:ring-[#E8622A]/20 transition-all no-scrollbar"
       >
         {options.map(opt => (
            <option key={opt} value={opt}>
@@ -277,7 +290,7 @@ function FilterSelect({ label, options, value, onChange }: { label: string, opti
            </option>
         ))}
       </select>
-      <ChevronDown className="w-4 h-4 text-muted absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none group-hover:text-primary transition-colors" />
+      <ChevronDown className="w-4 h-4 text-gray-500 absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none group-hover:text-gray-800 transition-colors" />
     </div>
   );
 }

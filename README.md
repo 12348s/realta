@@ -1,36 +1,121 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Realta — Premium Real Estate Platform
 
-## Getting Started
+A modern, production-ready real estate web application built with **Next.js 14**, featuring a stunning dark-orange design system, interactive property maps, and a full agent dashboard.
 
-First, run the development server:
+![Realta Banner](https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=80)
+
+---
+
+## ✨ Features
+
+- **Home Page** — Hero search, featured listings, Buy/Sell CTAs
+- **Property Search** — Split layout with interactive Leaflet map, price markers & advanced filters
+- **Property Details** — Full gallery, dynamic stats (area, beds, baths), amenities, mortgage calculator, map
+- **Compare Properties** — Side-by-side property comparison with a neighborhood map
+- **Saved Properties** — Heart-based wishlist with saved search alerts (Zustand-persisted)
+- **Agent Dashboard** — Stats cards, performance chart, listings table with orange accent theme
+- **Add New Listing** — Full form with Zod validation, Zustand store integration, success toast & redirect
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 14 (App Router) |
+| Language | TypeScript |
+| Styling | Tailwind CSS |
+| UI Components | shadcn/ui |
+| Maps | Leaflet + react-leaflet |
+| Charts | Recharts |
+| State Management | Zustand |
+| Form Validation | React Hook Form + Zod |
+| Fonts | Inter, Plus Jakarta Sans |
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18+
+- npm
+
+### Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/YOUR_USERNAME/realta.git
+cd realta
+
+# Install dependencies
+npm install
+
+# Start the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📁 Project Structure
 
-## Learn More
+```
+src/
+├── app/
+│   ├── page.tsx                  # Home page
+│   ├── properties/
+│   │   ├── page.tsx              # Property search with map
+│   │   └── [id]/                 # Property detail page
+│   ├── compare/                  # Compare properties
+│   ├── saved/                    # Saved / wishlist
+│   ├── agent/
+│   │   ├── dashboard/            # Agent dashboard
+│   │   └── new-listing/          # Add new listing form
+│   └── data/
+│       └── mumbaiProperties.json # Property dataset
+├── components/
+│   ├── PropertyMap.tsx           # Interactive Leaflet map
+│   ├── NeighborhoodMap.tsx       # Static neighborhood map
+│   ├── AdvancedFiltersModal.tsx  # Advanced search filters
+│   └── ui/                       # shadcn/ui components
+└── store/
+    ├── savedStore.ts             # Wishlist Zustand store
+    ├── filterStore.ts            # Filter state store
+    └── useListingStore.ts        # Agent listings store
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🎨 Design System
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Token | Value |
+|---|---|
+| Background | `#F5F0EB` |
+| Accent (Orange) | `#E8622A` |
+| Card Background | `#FFFFFF` |
+| Heading Font | Inter |
+| Body Font | Plus Jakarta Sans |
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📦 Build
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build
+npm run start
+```
+
+---
+
+## 🌐 Deploy
+
+This project is ready to deploy on **Vercel** with zero configuration:
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
+
+---
+
+## 📄 License
+
+MIT

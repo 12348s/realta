@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import { Layers, Navigation } from 'lucide-react'
 
 interface Property {
   propertyId: string
@@ -59,17 +60,21 @@ export default function PropertyMap({
         const lat = parseFloat(property.location.coordinates.latitude)
         const lng = parseFloat(property.location.coordinates.longitude)
 
+        // Convert long price "₹1.85 Cr" to something like "$1.85M" based on screenshot, or just use the range. Let's use property.price.range but style it like the screenshot. 
+        // Screenshot uses `$1.25M`. We'll just display `property.price.range` since the prompt said not to change logic/data.
+        
         const icon = L.divIcon({
           html: `<div style="
-            background: #E8622A;
-            color: white;
-            padding: 4px 10px;
+            background: white;
+            color: #1A1A1A;
+            padding: 6px 12px;
             border-radius: 20px;
             font-weight: 700;
-            font-size: 12px;
+            font-size: 13px;
             white-space: nowrap;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             cursor: pointer;
+            border: 1px solid #E5E0D8;
           ">${property.price.range}</div>`,
           className: '',
           iconAnchor: [30, 15],
@@ -133,17 +138,19 @@ export default function PropertyMap({
         const isHighlighted = id === hoveredId
         const newIcon = L.divIcon({
           html: `<div style="
-            background: ${isHighlighted ? '#1C2B3A' : '#E8622A'};
-            color: white;
-            padding: 4px 10px;
+            background: ${isHighlighted ? '#E8622A' : 'white'};
+            color: ${isHighlighted ? 'white' : '#1A1A1A'};
+            padding: 6px 12px;
             border-radius: 20px;
             font-weight: 700;
-            font-size: 12px;
+            font-size: 13px;
             white-space: nowrap;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-            transform: ${isHighlighted ? 'scale(1.15)' : 'scale(1)'};
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: ${isHighlighted ? 'scale(1.05)' : 'scale(1)'};
             transition: all 0.2s;
             cursor: pointer;
+            border: 1px solid ${isHighlighted ? '#E8622A' : '#E5E0D8'};
+            z-index: ${isHighlighted ? '1000' : '1'};
           ">${price}</div>`,
           className: '',
           iconAnchor: [30, 15],
@@ -160,17 +167,16 @@ export default function PropertyMap({
       <div ref={mapContainerRef} className="w-full h-full z-10" />
 
       {/* Floating buttons */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 
-        flex gap-3 z-[1000]">
-        <button className="flex items-center gap-2 px-4 py-2 
-          rounded-full text-white text-sm font-semibold shadow-lg"
-          style={{ background: '#1C2B3A' }}>
-          🛰 Satellite View
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-4 z-[1000]">
+        <button className="flex items-center gap-2.5 px-6 py-3 
+          rounded-full text-white text-[15px] font-bold shadow-lg hover:scale-105 transition-transform"
+          style={{ background: '#131722' }}>
+          <Layers className="w-5 h-5 opacity-90" /> Satellite View
         </button>
-        <button className="flex items-center gap-2 px-4 py-2 
-          rounded-full text-white text-sm font-semibold shadow-lg"
+        <button className="flex items-center gap-2.5 px-6 py-3 
+          rounded-full text-white text-[15px] font-bold shadow-lg hover:scale-105 transition-transform"
           style={{ background: '#E8622A' }}>
-          ➤ Search Area
+          <Navigation className="w-5 h-5 opacity-90 fill-white" /> Search Area
         </button>
       </div>
     </div>

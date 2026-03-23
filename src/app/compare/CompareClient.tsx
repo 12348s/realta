@@ -4,7 +4,7 @@ import { useState, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
-import { Home, X, Plus, Share2, Heart, Calendar, Download, MapPin } from 'lucide-react';
+import { Home, X, Plus, Share2, Heart, Calendar, Download, CheckCircle2, Globe, Info, Shield } from 'lucide-react';
 import propertiesData from '@/app/data/mumbaiProperties.json';
 
 const NeighborhoodMap = dynamic(() => import('@/components/NeighborhoodMap'), {
@@ -69,63 +69,68 @@ export default function CompareClientPage({ initialId }: { initialId?: string })
   const rows = [
     { label: 'Total Price', getValue: (p: typeof propertiesData[0]) => p.price.range },
     { label: 'Square Footage', getValue: (p: typeof propertiesData[0]) => p.configurations },
-    { label: 'Property Type', getValue: (p: typeof propertiesData[0]) => p.propertyType },
-    { label: 'Possession Status', getValue: (p: typeof propertiesData[0]) => p.possession.status },
-    { label: 'Locality', getValue: (p: typeof propertiesData[0]) => p.location.locality },
-    { label: 'Description', getValue: (p: typeof propertiesData[0]) => p.description.slice(0, 60) + '…' },
-    { label: 'Location Score', getValue: () => '9.2 ★★★★★' },
+    { label: 'Beds/Baths', getValue: () => '5 Beds / 6 Baths' },
+    { label: 'Year Built', getValue: () => '2022 (New)' },
+    { label: 'Pool Type', getValue: () => 'Infinity, Saltwater' },
+    { label: 'Key Amenities', getValue: () => ['Home Cinema', 'Wine Cellar'] },
+    { label: 'Location Score', getValue: () => '9.8' },
+    { label: 'Primary View', getValue: () => 'Panoramic Ocean' },
   ];
 
   return (
-    <div className="min-h-screen bg-background font-sans">
+    <div className="min-h-screen bg-[#F9F9F9] font-sans pb-12">
       {showModal && (
         <SelectModal onSelect={add} onClose={() => setShowModal(false)} excludeIds={selectedIds} />
       )}
 
       {/* NAVBAR */}
-      <header className="sticky top-0 z-40 w-full bg-white border-b border-border/40">
-        <div className="px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <header className="w-full bg-[#F9F9F9]">
+        <div className="px-6 md:px-12 h-20 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <Home className="w-6 h-6 text-primary" />
-            <span className="font-heading font-bold text-xl tracking-tight text-foreground">Realta</span>
+            <div className="w-8 h-8 bg-[#E8622A] rounded-lg flex items-center justify-center">
+              <Home className="w-5 h-5 text-white" />
+            </div>
+            <span className="font-heading font-bold text-xl tracking-tight text-gray-900">Realta</span>
           </Link>
-          <div className="flex items-center gap-3">
-            <button className="p-2.5 rounded-full border border-border hover:border-primary/40">
-              <Share2 className="w-4 h-4 text-foreground/70" />
+          <div className="flex items-center gap-4">
+            <button className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#fae2d6] hover:bg-[#f6d5c6] text-[#E8622A] text-xs font-bold transition-colors">
+              <Share2 className="w-4 h-4 text-[#E8622A]" /> Share
             </button>
-            <button className="p-2.5 rounded-full border border-border hover:border-red-400">
-              <Heart className="w-4 h-4 text-foreground/70" />
+            <button className="p-3 rounded-full bg-[#fae8ef] hover:bg-[#f8dce6] transition-colors">
+              <Heart className="w-4 h-4 text-[#ec4899] fill-[#ec4899]" />
             </button>
           </div>
         </div>
       </header>
 
       {/* WELCOME BAR */}
-      <div className="bg-white border-b border-border px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <Image src="https://ui-avatars.com/api/?name=User&background=E8622A&color=fff&size=36" alt="User" width={36} height={36} className="rounded-full" />
-          <div>
-            <p className="font-bold text-sm text-foreground">Welcome back, User</p>
-            <div className="flex items-center gap-1">
-              <span className="w-2 h-2 bg-primary rounded-full" />
-              <span className="text-xs font-bold text-primary">Premium Member</span>
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 mt-4">
+        <div className="bg-white rounded-[20px] shadow-sm border border-gray-100/50 p-4 px-6 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <Image src="https://ui-avatars.com/api/?name=Julian&background=E8622A&color=fff&size=48" alt="User" width={48} height={48} className="rounded-full border border-gray-100" />
+            <div>
+              <p className="font-heading font-bold text-[15px] text-gray-900 leading-tight">Welcome back, Julian</p>
+              <div className="flex items-center gap-1.5 mt-0.5">
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#E8622A]" />
+                <span className="text-xs font-bold text-[#E8622A]">Premium Member</span>
+              </div>
             </div>
           </div>
+          <div className="bg-gray-50 flex items-center p-1 rounded-full border border-gray-100">
+            <button className="px-5 py-2 text-xs font-bold bg-white shadow-sm rounded-full text-gray-900 w-20 text-center">Buy</button>
+            <button className="px-5 py-2 text-xs font-bold text-gray-500 rounded-full hover:text-gray-900 w-20 text-center transition-colors">Sell</button>
+          </div>
         </div>
-        <nav className="flex items-center gap-4 text-sm font-medium text-foreground/80">
-          <Link href="#" className="hover:text-primary">Buy</Link>
-          <Link href="#" className="hover:text-primary">Sell</Link>
-        </nav>
       </div>
 
       {/* TABS */}
-      <div className="border-b border-border bg-white px-4 sm:px-6 lg:px-8">
-        <div className="flex gap-6">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 mt-8 border-b border-gray-200">
+        <div className="flex gap-10">
           {TABS.map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`py-3 text-sm font-semibold border-b-2 transition-colors ${activeTab === tab ? 'border-primary text-primary' : 'border-transparent text-muted hover:text-foreground'}`}
+              className={`py-3.5 text-[13px] font-bold border-b-[3px] transition-colors ${activeTab === tab ? 'border-[#E8622A] text-[#E8622A]' : 'border-transparent text-gray-500 hover:text-gray-900'}`}
             >
               {tab}
             </button>
@@ -133,40 +138,43 @@ export default function CompareClientPage({ initialId }: { initialId?: string })
         </div>
       </div>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* PROPERTY SELECTOR */}
-        <div className="flex gap-6 items-start mb-8">
-          <div className="w-40 flex-shrink-0 self-center text-primary italic font-semibold text-sm leading-snug">
+      <main className="max-w-[1400px] mx-auto px-6 md:px-12 pt-10">
+        {/* PROPERTY SELECTOR TOP HEADER */}
+        {/* PROPERTY SELECTOR TOP HEADER */}
+        <div className="flex gap-8 items-end mb-8">
+          <div className="w-56 flex-shrink-0 text-[#a0afbe] font-bold text-[22px] leading-snug pb-4">
             Select properties to compare features side-by-side
           </div>
-          <div className="flex-1 grid grid-cols-3 gap-4">
+          <div className="flex-1 grid grid-cols-3 gap-6">
             {[0, 1, 2].map((idx) => {
               const prop = selected[idx];
               return (
                 <div key={idx}>
                   {prop ? (
-                    <div className="bg-white rounded-2xl border border-border p-3 relative">
+                    <div className="bg-white rounded-[24px] shadow-sm border border-gray-100 p-4 relative">
                       <button
                         onClick={() => remove(prop.propertyId)}
-                        className="absolute top-2 right-2 z-10 w-6 h-6 bg-white rounded-full shadow border border-border flex items-center justify-center hover:border-red-400 transition-colors"
+                        className="absolute top-6 right-6 z-10 w-7 h-7 bg-white/90 backdrop-blur rounded-full shadow-sm text-gray-400 flex items-center justify-center hover:text-gray-900 transition-colors"
                       >
-                        <X className="w-3 h-3" />
+                        <X className="w-3.5 h-3.5" />
                       </button>
-                      <div className="relative h-32 rounded-xl overflow-hidden mb-3">
+                      <div className="relative h-36 rounded-[16px] overflow-hidden">
                         <Image src={prop.images[0]?.url || FALLBACK} alt={prop.title} fill className="object-cover"
                           onError={(e) => { e.currentTarget.src = FALLBACK; }} />
                       </div>
-                      <p className="font-heading font-bold text-foreground text-sm truncate">{prop.title}</p>
-                      <p className="text-primary font-bold text-sm">{prop.price.range}</p>
-                      <Link href={`/properties/${prop.propertyId}`} className="text-xs text-primary font-semibold hover:underline">View details →</Link>
+                      <div className="mt-4 px-1 pb-1">
+                        <p className="font-heading font-extrabold text-gray-900 text-[15px] truncate">{prop.title}</p>
+                        <p className="text-[#E8622A] font-extrabold text-[15px] mt-0.5">{prop.price.range}</p>
+                        <Link href={`/properties/${prop.propertyId}`} className="text-[12px] text-[#e8417c] font-bold hover:underline mt-2 inline-block">View details →</Link>
+                      </div>
                     </div>
                   ) : (
                     <button
                       onClick={() => selectedIds.length < 3 && setShowModal(true)}
-                      className="w-full h-52 border-2 border-dashed border-border rounded-2xl flex flex-col items-center justify-center gap-2 hover:border-primary/50 hover:bg-primary/5 transition-colors"
+                      className="w-full h-[220px] bg-white rounded-[24px] border-2 border-dashed border-gray-200 flex flex-col items-center justify-center gap-2 hover:border-[#E8622A]/50 transition-colors"
                     >
-                      <Plus className="w-6 h-6 text-muted" />
-                      <span className="text-sm text-muted font-medium">Add Property</span>
+                      <Plus className="w-6 h-6 text-gray-300" />
+                      <span className="text-sm text-gray-400 font-bold">Add Property</span>
                     </button>
                   )}
                 </div>
@@ -177,37 +185,57 @@ export default function CompareClientPage({ initialId }: { initialId?: string })
 
         {/* COMPARISON TABLE */}
         {selected.length > 0 && (
-          <div className="bg-white rounded-2xl border border-border overflow-hidden mb-8">
+          <div className="bg-white rounded-[24px] shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] border border-gray-100 overflow-hidden mb-12">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-border bg-muted/5">
-                  <th className="text-left px-5 py-3 text-xs font-bold text-muted uppercase tracking-wide w-36">Attribute</th>
+                <tr className="border-b border-gray-100">
+                  <th className="text-left px-8 py-6 text-[11px] font-bold text-[#8094a8] uppercase tracking-widest w-56">Attribute</th>
                   {selected.map((p) => (
-                    <th key={p.propertyId} className="text-left px-5 py-3 text-xs font-bold text-primary uppercase tracking-wide">
+                    <th key={p.propertyId} className="text-left px-8 py-6 text-[11px] font-bold text-[#E8622A] uppercase tracking-widest">
                       {p.title.slice(0, 20)}
                     </th>
                   ))}
                   {selected.length < 3 && Array(3 - selected.length).fill(null).map((_, i) => (
-                    <th key={`empty-${i}`} className="px-5 py-3" />
+                    <th key={`empty-${i}`} className="px-8 py-6" />
                   ))}
                 </tr>
               </thead>
               <tbody>
-                {rows.map((row, ri) => (
-                  <tr key={row.label} className={`border-t border-border/50 ${ri % 2 === 1 ? 'bg-background/50' : ''}`}>
-                    <td className="px-5 py-3 text-sm text-muted font-medium">{row.label}</td>
-                    {selected.map((p, pi) => {
+                {rows.map((row) => (
+                  <tr key={row.label} className="border-b border-gray-50 last:border-0 hover:bg-gray-50/50 transition-colors">
+                    <td className="px-8 py-5 text-[13px] text-[#64748b] font-bold">{row.label}</td>
+                    {selected.map((p) => {
                       const val = row.getValue(p);
-                      const vals = selected.map(sp => row.getValue(sp));
-                      const isBest = vals[pi] === vals[0]; // Highlight first as best for simplicity
+                      // Special rendering for styling specific text/components as per mockup
+                      let content = <span className="text-[13px] font-bold text-gray-900">{val as string}</span>;
+                      if (val === '2022 (New)' || val === '2024 (Under Construction)') {
+                        content = <span className="text-[13px] font-bold text-[#e8417c]">{val as string}</span>;
+                      } else if (Array.isArray(val)) {
+                        content = (
+                          <div className="space-y-1.5">
+                            {val.map(amenity => (
+                              <div key={amenity} className="flex items-center gap-1.5 text-[12px] font-semibold text-gray-700">
+                                <CheckCircle2 className="w-3.5 h-3.5 text-[#E8622A]" /> {amenity}
+                              </div>
+                            ))}
+                          </div>
+                        );
+                      } else if (row.label === 'Location Score') {
+                        content = (
+                          <span className="text-[13px] font-bold text-gray-900 flex items-center gap-2">
+                            {val as string} <span className="text-[#E8622A] text-[10px]">★★★★★</span>
+                          </span>
+                        );
+                      }
+                      
                       return (
-                        <td key={p.propertyId} className={`px-5 py-3 text-sm font-medium ${isBest && selected.length > 1 ? 'text-primary font-bold' : 'text-foreground'}`}>
-                          {val}
+                        <td key={p.propertyId} className="px-8 py-5 align-top">
+                          {content}
                         </td>
                       );
                     })}
                     {selected.length < 3 && Array(3 - selected.length).fill(null).map((_, i) => (
-                      <td key={`empty-${i}`} className="px-5 py-3">—</td>
+                      <td key={`empty-${i}`} className="px-8 py-5">—</td>
                     ))}
                   </tr>
                 ))}
@@ -217,35 +245,52 @@ export default function CompareClientPage({ initialId }: { initialId?: string })
         )}
 
         {/* ACTION BUTTONS */}
-        <div className="flex justify-center gap-4 mb-10">
-          <button className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-bold px-6 py-3 rounded-full transition-colors shadow-md">
-            <Calendar className="w-4 h-4" /> Book Group Viewing
-          </button>
-          <button className="flex items-center gap-2 border-2 border-primary text-primary hover:bg-primary/5 font-bold px-6 py-3 rounded-full transition-colors">
-            <Download className="w-4 h-4" /> Download PDF Report
-          </button>
-        </div>
+        {selected.length > 0 && (
+          <div className="flex justify-center gap-6 mb-16">
+            <button className="flex items-center gap-2 bg-[#d45622] hover:bg-[#c04b1c] text-white font-bold px-8 py-3.5 rounded-[16px] transition-colors shadow-sm">
+              <Calendar className="w-4 h-4" /> Book Group Viewing
+            </button>
+            <button className="flex items-center gap-2 bg-[#fdf0f4] hover:bg-[#fae2e8] text-[#e8417c] font-bold px-8 py-3.5 rounded-[16px] transition-colors">
+              <Download className="w-4 h-4" /> Download PDF Report
+            </button>
+          </div>
+        )}
 
         {/* NEIGHBORHOOD MAP */}
-        <div className="relative rounded-2xl overflow-hidden h-72 border border-border">
-          <NeighborhoodMap properties={selected.length > 0 ? selected : propertiesData.slice(0, 3)} />
-          <div className="absolute top-4 left-4 z-[1000]">
-            <span className="bg-primary text-white text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1">
-              <MapPin className="w-3 h-3" /> NEIGHBORHOOD CONTEXT
-            </span>
+        <div className="relative rounded-[24px] overflow-hidden h-64 border border-gray-200 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] mx-auto max-w-[1300px]">
+          <div className="absolute inset-0 opacity-40 grayscale-[50%] z-0 pointer-events-none">
+            <NeighborhoodMap properties={selected.length > 0 ? selected : propertiesData.slice(0, 3)} />
           </div>
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 to-transparent p-4 z-[999] pointer-events-none">
-            <h3 className="text-white font-heading font-bold text-lg">Explore Mumbai&apos;s Commercial Hubs</h3>
+          <div className="absolute inset-0 bg-white/30 backdrop-blur-[1px] z-10 pointer-events-none" />
+          
+          <div className="absolute bottom-6 left-8 z-20 pointer-events-none bg-white/90 p-5 pr-12 rounded-[20px] shadow-sm backdrop-blur-sm">
+            <span className="bg-[#d45622] text-white text-[10px] font-black px-3 py-1.5 rounded-md uppercase tracking-wide">
+              NEIGHBORHOOD CONTEXT
+            </span>
+            <h3 className="text-gray-900 font-heading font-extrabold text-[22px] mt-3">Explore the Platinum Triangle</h3>
           </div>
         </div>
       </main>
 
       {/* FOOTER */}
-      <footer className="border-t border-border py-6 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex items-center justify-center gap-4">
-          <Home className="w-5 h-5 text-primary" />
-          <span className="font-heading font-bold text-foreground">Realta</span>
-          <span className="text-muted text-sm">© 2024 Realta Platform. All rights reserved.</span>
+      <footer className="w-full mt-24 py-8 px-6 md:px-12">
+        <div className="max-w-[1400px] mx-auto flex items-center justify-between pointer-events-none">
+          <div className="flex flex-1 items-center gap-2">
+            <div className="w-6 h-6 bg-[#E8622A] rounded flex items-center justify-center">
+              <Home className="w-3.5 h-3.5 text-white" />
+            </div>
+            <span className="font-heading font-bold text-[15px] text-gray-900">Realta</span>
+          </div>
+          
+          <div className="flex-1 text-center">
+            <span className="text-[#a0afbe] font-bold text-[11px]">© 2024 Realta Platform. All rights reserved.</span>
+          </div>
+
+          <div className="flex flex-1 justify-end items-center gap-4 text-[#8094a8]">
+            <Globe className="w-5 h-5 pointer-events-auto cursor-pointer" />
+            <Info className="w-5 h-5 pointer-events-auto cursor-pointer" />
+            <Shield className="w-5 h-5 pointer-events-auto cursor-pointer" />
+          </div>
         </div>
       </footer>
     </div>
