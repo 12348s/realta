@@ -44,7 +44,7 @@ A modern, production-ready real estate web application built with **Next.js 14**
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/realta.git
+git clone https://github.com/12348s/realta.git
 cd realta
 
 # Install dependencies
